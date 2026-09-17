@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kortingscalculator</title>
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
   <header>
@@ -16,7 +17,7 @@
       <form id="discount-form">
         <input type="number" id="amount" placeholder="Bestelbedrag (€)">
         <input type="number" id="discount" placeholder="Korting (%)">
-        <button type="submit">Bereken</button>
+        <button type="submit" id="btn">Bereken</button>
       </form>
     </section>
     <section>
@@ -24,6 +25,5 @@
       <p id="result"></p>
     </section>
   </main>
-  <script src="script.js"></script>
 </body>
 </html>
