@@ -45,5 +45,3 @@ const taakToevoegen = () =>{
 const toonTaken = () =>{
     counter.innerHTML = taken;
 };
-
-
