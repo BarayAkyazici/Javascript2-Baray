@@ -1,14 +1,14 @@
-// Fout gevonden: _______________
-// Oplossing: _______________
+// Fout gevonden: in de json file commas verkeerd, apendchild verkeerde ding in gezet, queryselector verkeerde naam, verkeerde bestandspad, bestand inladen in de html...
+// Oplossing: alles wat ik heb opgenoemd aanpassen.
 
-fetch('./users')
+fetch('./users.json')
   .then(r => r.json())
   .then(users => {
-    const list = document.querySelector('#result');
+    const list = document.querySelector('#results');
     users.forEach(user => {
       const li = document.createElement('li');
       li.textContent = user.name;
-      list.appendChild(list);
+      list.appendChild(li);
     });
   })
   .catch(error => console.error('Fout:', error));
