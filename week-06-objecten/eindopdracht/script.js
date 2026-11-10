@@ -7,15 +7,36 @@ const users = [
 
 let filter = 'all';
 
+const userstorage = document.querySelector('#users');
+
 const showUsers = (users) => {
+  userstorage.innerHTML = users.map((user) => {
+    const { name, email, role, active } = user;
+
+    return `
+      <article>
+        <h3>${name}</h3>
+        <p>${email}</p>
+        <p>Rol: ${role}</p>
+        <p>${active ? 'Actief' : 'Niet actief'}</p>
+      </article>
+    `;
+  }).join('');
+
   // Gebruik destructuring voor elke user: const { name, email, role, active } = user
   // Toon elke user als een <article> in #users
 };
 
 const filterUsers = () => {
-  // Als filter 'admin' is, toon alleen gebruikers met role === 'admin'
-  // Anders toon je alle gebruikers
-  // Roep showUsers() aan met de gefilterde lijst
+  if (filter === 'admin') {
+    const filteredUsers = users.filter((user) => {
+      return user.role === 'admin';
+    });
+
+    showUsers(filteredUsers);
+  } else {
+    showUsers(users);
+  }
 };
 
 // Maak een eventlistener voor de #filter-admin button
@@ -23,6 +44,10 @@ const filterUsers = () => {
 
 // Maak een eventlistener voor de #filter-all button
 // Zet filter op 'all' en roep filterUsers() aan
+document.querySelector('#filter-all').addEventListener('click', () => {
+  filter = 'admin';
+  filterUsers();
+});
 
 // Maak een eventlistener voor het #user-form submit event
 // Lees naam, email en role uit de invoervelden
