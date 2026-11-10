@@ -1,5 +1,9 @@
 // API_KEY wordt geladen vanuit config.js (zie config.example.js voor instructies)
-
+fetch('config.js')
+  .then(Response => Response.js)
+  .then(wheater =>{
+    
+  })
 const showWeather = (data) => {
   // Zet de weerinformatie van data om naar HTML in #weather-info
   // Toon: stadsnaam, weer-icon, temperatuur, gevoelstemperatuur, luchtvochtigheid en windsnelheid
