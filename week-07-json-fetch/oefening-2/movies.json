@@ -1,1 +1,6 @@
-[]
+[
+    {"title":"movie","director":"Johan","year":2023,"genre":"Horror"},
+    {"title":"movie","director":"Johan","year":2023,"genre":"Horror"},
+    {"title":"movie","director":"Johan","year":2023,"genre":"Horror"},
+    {"title":"movie","director":"Johan","year":2023,"genre":"Horror"}
+]

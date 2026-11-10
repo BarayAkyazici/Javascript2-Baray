@@ -1,26 +1,52 @@
 let allArticles = [];
 
 const showArticles = (articles) => {
-  // Zet elk artikel om naar een <article> met map() en toon het in #articles
-  // Toon de title, category en summary van elk artikel
+  const html = articles.map(article => {
+    return `
+      <article>
+        <h2>${article.title}</h2>
+        <p>${article.category}</p>
+        <p>${article.summary}</p>
+      </article>
+    `
+  }).join('');
+
+  document.querySelector('#articles').innerHTML = html;
 };
 
 fetch('./news.json')
   .then(r => r.json())
   .then(articles => {
-    // Sla de artikelen op in allArticles
-    // Roep showArticles() aan met allArticles
+    allArticles = articles;
+    showArticles(articles);
   })
   .catch(error => console.error('Fout bij laden:', error));
 
-// Maak een eventlistener voor de #filter-alle button
-// Roep showArticles() aan met allArticles
+document.querySelector('#filter-stad').addEventListener('click', () => {
+    const stadArticles = allArticles.filter(article =>{
+      return article.category === 'Stad';
+    });
+    showArticles(stadArticles);
+  });
 
-// Maak een eventlistener voor de #filter-stad button
-// Filter allArticles op category 'Stad' en roep showArticles() aan
+document.querySelector('#filter-technologie')
+  .addEventListener('click', () => {
+    const showTechnologie = allArticles.filter(article =>{
+      return article.category === 'Technologie';
+    });
+    showArticles(showTechnologie);
+  });
 
-// Maak een eventlistener voor de #filter-technologie button
-// Filter allArticles op category 'Technologie' en roep showArticles() aan
+document.querySelector('#filter-alle')
+  .addEventListener('click', () => {
+    showArticles(allArticles);
+  });
 
-// Maak een eventlistener voor de #filter-media button
-// Filter allArticles op category 'Media' en roep showArticles() aan
+document.querySelector('#filter-media')
+  .addEventListener('click', () => {
+    const mediaArticles = allArticles.filter(article => {
+      return article.category === 'Media';
+    });
+
+    showArticles(mediaArticles);
+  });
